@@ -25,6 +25,7 @@ test_pipeline = [
     dict(type='LoadAnnotations'),
     dict(type='PackSegInputs')
 ]
+
 img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
 tta_pipeline = [
     dict(type='LoadImageFromFile', backend_args=None),
@@ -41,19 +42,14 @@ tta_pipeline = [
             ], [dict(type='LoadAnnotations')], [dict(type='PackSegInputs')]
         ])
 ]
-dataset_train = dict(
-    type=dataset_type,
-    data_root=data_root,
-    data_prefix=dict(img_path='JPEGImages', seg_map_path='SegmentationClass'),
-    ann_file='ImageSets/Segmentation/train.txt',
-    pipeline=train_pipeline)
 
 dataset_aug = dict(
     type=dataset_type,
     data_root=data_root,
     data_prefix=dict(
+        # replace seg_map_path='SegmentationClassAug' with 'PseudoClassAug'
         img_path='JPEGImages', seg_map_path='SegmentationClassAug'),
-    ann_file='ImageSets/Segmentation/aug.txt',
+    ann_file='ImageSets/SegmentationAug/train_aug_id.txt',
     pipeline=train_pipeline)
 
 train_dataloader = dict(
@@ -61,7 +57,7 @@ train_dataloader = dict(
     num_workers=4,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
-    dataset=dict(type='ConcatDataset', datasets=[dataset_train, dataset_aug]))
+    dataset=dataset_aug)
 
 val_dataloader = dict(
     batch_size=1,
@@ -72,8 +68,8 @@ val_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         data_prefix=dict(
-            img_path='JPEGImages', seg_map_path='SegmentationClass'),
-        ann_file='ImageSets/Segmentation/val.txt',
+            img_path='JPEGImages', seg_map_path='SegmentationClassAug'),
+        ann_file='ImageSets/Segmentation/val_id.txt',
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 

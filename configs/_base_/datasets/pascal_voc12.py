@@ -39,6 +39,7 @@ tta_pipeline = [
             ], [dict(type='LoadAnnotations')], [dict(type='PackSegInputs')]
         ])
 ]
+
 train_dataloader = dict(
     batch_size=4,
     num_workers=4,
@@ -51,6 +52,7 @@ train_dataloader = dict(
             img_path='JPEGImages', seg_map_path='SegmentationClass'),
         ann_file='ImageSets/Segmentation/train.txt',
         pipeline=train_pipeline))
+
 val_dataloader = dict(
     batch_size=1,
     num_workers=4,
