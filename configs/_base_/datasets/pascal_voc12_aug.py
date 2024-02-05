@@ -48,12 +48,12 @@ dataset_aug = dict(
     data_root=data_root,
     data_prefix=dict(
         # replace seg_map_path='SegmentationClassAug' with 'PseudoClassAug'
-        img_path='JPEGImages', seg_map_path='SegmentationClassAug'),
+        img_path='JPEGImages', seg_map_path='PseudoClassAug'),
     ann_file='ImageSets/SegmentationAug/train_aug_id.txt',
     pipeline=train_pipeline)
 
 train_dataloader = dict(
-    batch_size=4,
+    batch_size=8, # make the total batch size as 16
     num_workers=4,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
