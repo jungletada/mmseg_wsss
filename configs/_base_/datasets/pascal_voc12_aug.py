@@ -69,7 +69,7 @@ val_dataloader = dict(
         data_root=data_root,
         data_prefix=dict(
             img_path='JPEGImages', seg_map_path='SegmentationClassAug'),
-        ann_file='ImageSets/Segmentation/val_id.txt',
+        ann_file='ImageSets/SegmentationAug/val_id.txt',
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
