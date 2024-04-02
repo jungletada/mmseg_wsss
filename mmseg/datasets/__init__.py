@@ -6,7 +6,7 @@ from .basesegdataset import BaseCDDataset, BaseSegDataset
 # from .bdd100k import BDD100KDataset
 # from .chase_db1 import ChaseDB1Dataset
 # from .cityscapes import CityscapesDataset
-from .coco_stuff import COCOStuffDataset
+# from .coco_stuff import COCOStuffDataset
 # from .dark_zurich import DarkZurichDataset
 # from .dataset_wrappers import MultiImageMixDataset
 # from .decathlon import DecathlonDataset
@@ -39,7 +39,10 @@ from .transforms import (CLAHE, AdjustGamma, Albu, BioMedical3DPad,
                          RandomMosaic, RandomRotate, RandomRotFlip, Rerange,
                          ResizeShortestEdge, ResizeToMultiple, RGB2Gray,
                          SegRescale)
+
+
 from .voc import PascalVOCDataset
+from .mscoco import MSCOCOStuffDataset
 
 # yapf: enable
 # __all__ = [
@@ -66,10 +69,7 @@ from .voc import PascalVOCDataset
 
 
 __all__ = [
-    'PascalVOCDataset', 
-    'BaseSegDataset', 
-    'BaseCDDataset',
-    'COCOStuffDataset',
+    'PascalVOCDataset', 'MSCOCOStuffDataset','BaseSegDataset', 'BaseCDDataset',
     'BioMedical3DRandomCrop', 'BioMedical3DRandomFlip',
     'LoadAnnotations', 'RandomCrop', 'SegRescale', 'PhotoMetricDistortion',
     'RandomRotate', 'AdjustGamma', 'CLAHE', 'Rerange', 'RGB2Gray',

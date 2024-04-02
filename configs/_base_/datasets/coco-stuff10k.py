@@ -39,8 +39,9 @@ tta_pipeline = [
             ], [dict(type='LoadAnnotations')], [dict(type='PackSegInputs')]
         ])
 ]
+
 train_dataloader = dict(
-    batch_size=4,
+    batch_size=4, # make the total batch size as 16
     num_workers=4,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
@@ -51,6 +52,7 @@ train_dataloader = dict(
         data_prefix=dict(
             img_path='images/train2014', seg_map_path='annotations/train2014'),
         pipeline=train_pipeline))
+
 val_dataloader = dict(
     batch_size=1,
     num_workers=4,

@@ -5,7 +5,7 @@ MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
 
 GPUS=2
 CONFIG=configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-20k_voc12aug-512x512.py
-
+# configs/deeplabv3plus/deeplabv3plus_r101-d8_b16-20k_mscoco-512x512.py
 PYTHONPATH="$(dirname $0)/..":$PYTHONPATH \
 python -m torch.distributed.launch \
     --nnodes=$NNODES \
