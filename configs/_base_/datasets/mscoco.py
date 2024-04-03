@@ -1,5 +1,5 @@
 # dataset settings
-dataset_type = 'MSCOCOStuffDataset'
+dataset_type = 'MSCOCODataset'
 data_root = 'data/MSCOCO'
 crop_size = (512, 512)
 train_pipeline = [
@@ -16,14 +16,16 @@ train_pipeline = [
     dict(type='Pad', size=crop_size),
     dict(type='PackSegInputs')
 ]
+
 test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='Resize', scale=(2048, 512), keep_ratio=True),
     # add loading annotation after ``Resize`` because ground truth
     # does not need to do resize data transform
-    dict(type='LoadAnnotations', reduce_zero_label=True),
+    dict(type='LoadAnnotations'),
     dict(type='PackSegInputs')
 ]
+
 img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
 tta_pipeline = [
     dict(type='LoadImageFromFile', backend_args=None),
@@ -41,19 +43,21 @@ tta_pipeline = [
         ])
 ]
 
+dataset_aug = dict(
+    type=dataset_type,
+    data_root=data_root,
+    data_prefix=dict(
+        # replace seg_map_path='SegmentationClassAug' with 'model_mask_448'
+        img_path='train2014', seg_map_path='MaskSets/train2014'),
+    ann_file='ImageList/train_id.txt',
+    pipeline=train_pipeline)
+
 train_dataloader = dict(
-    batch_size=8, # make the total batch size as 16
-    num_workers=8,
+    batch_size=4, # make the total batch size as 16
+    num_workers=4,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
-    dataset=dict(
-        type=dataset_type,
-        data_root=data_root,
-        reduce_zero_label=True,
-        data_prefix=dict(
-            img_path='train2014', seg_map_path='MaskSets/train2014'),
-        ann_file='ImageList/train_id.txt',
-        pipeline=train_pipeline))
+    dataset=dataset_aug)
 
 val_dataloader = dict(
     batch_size=1,
@@ -63,7 +67,6 @@ val_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        reduce_zero_label=True,
         data_prefix=dict(
             img_path='val2014', seg_map_path='MaskSets/val2014'),
         ann_file='ImageList/val_id.txt',

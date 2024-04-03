@@ -42,7 +42,7 @@ from .transforms import (CLAHE, AdjustGamma, Albu, BioMedical3DPad,
 
 
 from .voc import PascalVOCDataset
-from .mscoco import MSCOCOStuffDataset
+from .mscoco import MSCOCODataset
 
 # yapf: enable
 # __all__ = [
@@ -69,7 +69,7 @@ from .mscoco import MSCOCOStuffDataset
 
 
 __all__ = [
-    'PascalVOCDataset', 'MSCOCOStuffDataset','BaseSegDataset', 'BaseCDDataset',
+    'PascalVOCDataset', 'MSCOCODataset','BaseSegDataset', 'BaseCDDataset',
     'BioMedical3DRandomCrop', 'BioMedical3DRandomFlip',
     'LoadAnnotations', 'RandomCrop', 'SegRescale', 'PhotoMetricDistortion',
     'RandomRotate', 'AdjustGamma', 'CLAHE', 'Rerange', 'RGB2Gray',

@@ -54,7 +54,7 @@ dataset_aug = dict(
 
 train_dataloader = dict(
     batch_size=8, # make the total batch size as 16
-    num_workers=8,
+    num_workers=4,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=dataset_aug)

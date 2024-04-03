@@ -223,7 +223,8 @@ class BaseSegDataset(BaseDataset):
             new_palette = type(palette)(new_palette)
         else:
             raise ValueError('palette does not match classes '
-                             f'as metainfo is {self._metainfo}.')
+                             f'as metainfo is {self._metainfo}. '
+                             f'with #palette={len(palette)} but #classes={len(classes)}')
         return new_palette
 
     def load_data_list(self) -> List[dict]:

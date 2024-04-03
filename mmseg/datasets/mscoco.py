@@ -7,8 +7,8 @@ from .basesegdataset import BaseSegDataset
 
 
 @DATASETS.register_module()
-class MSCOCOStuffDataset(BaseSegDataset):
-    """MSCOCO-Stuff dataset.
+class MSCOCODataset(BaseSegDataset):
+    """MSCOCO dataset.
 
     In segmentation map annotation for COCO-Stuff, Train-IDs of the 10k version
     are from 1 to 171, where 0 is the ignore index, and Train-ID of COCO Stuff
@@ -51,8 +51,6 @@ class MSCOCOStuffDataset(BaseSegDataset):
                  [128, 192, 0], [128, 0, 96], [192, 32, 0], [128, 64, 128],
                  [64, 128, 96], [64, 160, 0], [0, 64, 0], [192, 128, 224],
                  [64, 32, 0], [0, 192, 128], [64, 128, 224], [192, 160, 0],
-                 [0, 192, 0], [192, 128, 96], [192, 96, 128], [0, 64, 128],
-                 [64, 0, 96], [64, 224, 128], [128, 64, 0], [192, 0, 224],
                  [64, 64, 0]])
 
     def __init__(self,
