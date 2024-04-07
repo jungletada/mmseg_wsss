@@ -2,7 +2,7 @@ _base_ = [
     '../_base_/models/deeplabv3plus_r50-d8.py',
     '../_base_/datasets/mscoco.py', 
     '../_base_/default_runtime.py',
-    '../_base_/schedules/schedule_320k.py'
+    '../_base_/schedules/schedule_160k.py'
 ]
 crop_size = (512, 512)
 data_preprocessor = dict(size=crop_size)
@@ -23,7 +23,7 @@ param_scheduler = [
         eta_min=0.0,
         power=1.0,
         begin=1500,
-        end=320000,
+        end=160000,
         by_epoch=False,
     )
 ]
