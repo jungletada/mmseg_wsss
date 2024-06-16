@@ -47,7 +47,7 @@ dataset_aug = dict(
     type=dataset_type,
     data_root=data_root,
     data_prefix=dict(
-        # replace seg_map_path='SegmentationClassAug' with 'model_mask_448'
+        ##### replace seg_map_path='SegmentationClassAug' with 'model_mask_448'
         img_path='train2014', seg_map_path='MaskSets/train2014'),
     ann_file='ImageList/train_id.txt',
     pipeline=train_pipeline)

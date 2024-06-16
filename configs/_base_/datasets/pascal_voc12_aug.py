@@ -47,7 +47,7 @@ dataset_aug = dict(
     type=dataset_type,
     data_root=data_root,
     data_prefix=dict(
-        # replace seg_map_path='SegmentationClassAug' with 'model_mask_448'
+        ##### replace seg_map_path='SegmentationClassAug' with 'model_mask_448'
         img_path='JPEGImages', seg_map_path='model_mask_448'),
     ann_file='ImageSets/SegmentationAug/train_aug_id.txt',
     pipeline=train_pipeline)
@@ -68,9 +68,10 @@ val_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         data_prefix=dict(
-            img_path='JPEGImages', seg_map_path='SegmentationClassAug'),
+            img_path='JPEGImages', seg_map_path='SegmentationClass'),
         ann_file='ImageSets/SegmentationAug/val_id.txt',
         pipeline=test_pipeline))
+
 test_dataloader = val_dataloader
 
 val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
