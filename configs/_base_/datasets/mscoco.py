@@ -53,7 +53,7 @@ dataset_aug = dict(
     pipeline=train_pipeline)
 
 train_dataloader = dict(
-    batch_size=4, 
+    batch_size=4,
     num_workers=4,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),

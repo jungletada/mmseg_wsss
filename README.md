@@ -1,4 +1,4 @@
-# Weakly Supervised Semantic Segmentation based on OpenMMLab
+# Weakly Supervised Semantic Segmentation based on MMSegmentation
 ## Installation
 
 Please refer to [get_started.md](docs/en/get_started.md#installation) for installation and [dataset_prepare.md](docs/en/user_guides/2_dataset_prepare.md#prepare-datasets) for dataset preparation.
@@ -120,26 +120,26 @@ This project is released under the [Apache 2.0 license](LICENSE).
 #### Weakly Supervised
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) | Inf time (fps) | Device |  mIoU | mIoU(ms+flip) | 
 | ---------- | -------- | --------- | ------: | -------- | -------------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-50-D8  | 512x512   |   20000 | 7.6      | 21             | V100   | 75.93 |         77.50 | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   20000 | 11       | 13.88          | V100   | 77.22 |         78.59 |
-| DeepLabV3+ | R-50-D8  | 512x512   |   40000 | -        | -              | V100   | 76.81 |         77.57 | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              | V100   | 78.62 |         79.53 |
+| DeepLabV3+ | R-50-D8  | 512x512   |   20000 | 7.6      | 21             | V100   |   |           | 
+| DeepLabV3+ | R-101-D8 | 512x512   |   20000 | 11       | 13.88          | V100   |   |           |
+| DeepLabV3+ | R-50-D8  | 512x512   |   40000 | -        | -              | V100   |   |           | 
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              | V100   |   |           |
 
 
 ### MSCOCO
 #### Fully Supervised
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) | Inf time (fps) | Device |  mIoU | mIoU(ms+flip) | 
 | ---------- | -------- | --------- | ------: | -------- | -------------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-50-D8  | 512x512   |   20000 | 7.6      | 21             | V100   | 75.93 |         77.50 | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   20000 | 11       | 13.88          | V100   | 77.22 |         78.59 |
-| DeepLabV3+ | R-50-D8  | 512x512   |   40000 | -        | -              | V100   | 76.81 |         77.57 |
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              | V100   | 78.62 |         79.53 |
+| DeepLabV3+ | R-50-D8  | 512x512   |   20000 | 7.6      | 21             | V100   |   |           | 
+| DeepLabV3+ | R-101-D8 | 512x512   |   20000 | 11       | 13.88          | V100   |   |           |
+| DeepLabV3+ | R-50-D8  | 512x512   |   40000 | -        | -              | V100   |   |           |
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              | V100   |   |           |
 
 #### Weakly Supervised
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) | Inf time (fps) | Device |  mIoU | mIoU(ms+flip) | 
 | ---------- | -------- | --------- | ------: | -------- | -------------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-50-D8  | 512x512   |   20000 | 7.6      | 21             | V100   | 75.93 |         77.50 | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   20000 | 11       | 13.88          | V100   | 77.22 |         78.59 |
-| DeepLabV3+ | R-50-D8  | 512x512   |   40000 | -        | -              | V100   | 76.81 |         77.57 | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              | V100   | 78.62 |         79.53 |
+| DeepLabV3+ | R-50-D8  | 512x512   |   20000 | 7.6      | 21             | V100   |   |           | 
+| DeepLabV3+ | R-101-D8 | 512x512   |   20000 | 11       | 13.88          | V100   |   |           |
+| DeepLabV3+ | R-50-D8  | 512x512   |   40000 | -        | -              | V100   |   |           | 
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              | V100   |   |           |
 
