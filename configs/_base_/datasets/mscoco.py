@@ -47,14 +47,14 @@ dataset_aug = dict(
     type=dataset_type,
     data_root=data_root,
     data_prefix=dict(
-        ##### replace seg_map_path='MaskSets/train2014' with 'pseudo_mask_448'
+        ##### replace seg_map_path='MaskSets/train2014' with 'pseudo_mask'
         img_path='train2014', seg_map_path='MaskSets/train2014'),
     ann_file='ImageList/train_id.txt',
     pipeline=train_pipeline)
 
 train_dataloader = dict(
-    batch_size=4,
-    num_workers=4,
+    batch_size=16,
+    num_workers=16,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=dataset_aug)
