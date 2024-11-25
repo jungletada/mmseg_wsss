@@ -50,7 +50,7 @@ train_dataloader = dict(
         data_root=data_root,
         data_prefix=dict(
             img_path='JPEGImages', seg_map_path='SegmentationClass'),
-        ann_file='ImageSets/Segmentation/train.txt',
+        ann_file='ImageLists/train.txt',
         pipeline=train_pipeline))
 
 val_dataloader = dict(
@@ -63,7 +63,7 @@ val_dataloader = dict(
         data_root=data_root,
         data_prefix=dict(
             img_path='JPEGImages', seg_map_path='SegmentationClass'),
-        ann_file='ImageSets/Segmentation/val.txt',
+        ann_file='ImageLists/val.txt',
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 

@@ -26,7 +26,8 @@ test_pipeline = [
     dict(type='PackSegInputs')
 ]
 
-img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
+# img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
+img_ratios = [1.0]
 tta_pipeline = [
     dict(type='LoadImageFromFile', backend_args=None),
     dict(
@@ -48,13 +49,13 @@ dataset_aug = dict(
     data_root=data_root,
     data_prefix=dict(
         ##### replace seg_map_path='SegmentationClassAug' with 'pseudo_mask'
-        img_path='JPEGImages', seg_map_path='pseudo_mask_448'),
-    ann_file='ImageSets/SegmentationAug/train_aug_id.txt',
+        img_path='JPEGImages', seg_map_path='pseudo_mask'),
+    ann_file='ImageLists/train_aug_id.txt',
     pipeline=train_pipeline)
 
 train_dataloader = dict(
-    batch_size=4, 
-    num_workers=8,
+    batch_size=16, 
+    num_workers=16,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=dataset_aug)
@@ -69,7 +70,7 @@ val_dataloader = dict(
         data_root=data_root,
         data_prefix=dict(
             img_path='JPEGImages', seg_map_path='SegmentationClass'),
-        ann_file='ImageSets/SegmentationAug/val_id.txt',
+        ann_file='ImageLists/val_id.txt',
         pipeline=test_pipeline))
 
 test_dataloader = val_dataloader
