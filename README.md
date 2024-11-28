@@ -111,12 +111,8 @@ This project is released under the [Apache 2.0 license](LICENSE).
 ### Pascal VOC 2012 + Aug
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) | Inf time (fps) |  Type  |  mIoU | mIoU(ms+flip) | 
 | ---------- | -------- | --------- | ------: | -------- | -------------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-50-D8  | 512x512   |   20000 | 7.6      | 21             |  FSSS  | 75.93 |         77.50 | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   20000 | 11       | 13.88          |  FSSS  | 77.22 |         78.59 |
-| DeepLabV3+ | R-50-D8  | 512x512   |   40000 | -        | -              |  FSSS  | 76.81 |         77.57 |
 | DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              |  FSSS  | 78.62 |         79.53 |
-| DeepLabV3+ | R-50-D8  | 512x512   |   40000 | -        | -              |  WSSS  | 7?.   |         77.57 |
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              |  WSSS  | 7?    |         79.53 |
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | 11       | -              |  WSSS  | 7?    |         ? |
 
 ### MSCOCO
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) | Inf time (fps) |  Type  |  mIoU | mIoU(ms+flip) | 
