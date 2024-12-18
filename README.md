@@ -122,14 +122,14 @@ sh tools/dist_train.sh configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc1
 ## Results and models
 
 ### Pascal VOC 2012 + Aug
-| Method     | Backbone | Crop Size | Lr schd | Mem (GB) | Inf time (fps) |  Type  |  mIoU | mIoU(ms+flip) | 
-| ---------- | -------- | --------- | ------: | -------- | -------------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              |  FSSS  | 78.62 |         79.53 |
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | 11       | -              |  WSSS  | 7?    |         ? |
+| Method     | Backbone | Crop Size | Lr schd | Mem (GB) |  Type  |  mIoU | mIoU(ms+flip) | 
+| ---------- | -------- | --------- | ------: | -------- | ------ | ----: | ------------: | 
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        |  FSSS  | 78.62 |         79.53 |
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | 11       |  WSSS  | 7?    |         ?     |
 
 ### MSCOCO
-| Method     | Backbone | Crop Size | Lr schd | Mem (GB) | Inf time (fps) |  Type  |  mIoU | mIoU(ms+flip) | 
-| ---------- | -------- | --------- | ------: | -------- | -------------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              |  FSSS  | 58.85 |               |
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        | -              |  WSSS  | 58.85 |               |
+| Method     | Backbone | Crop Size | Lr schd | Mem (GB) |  Type  |  mIoU | mIoU(ms+flip) | 
+| ---------- | -------- | --------- | ------: | -------- | ------ | ----: | ------------: | 
+| DeepLabV3+ | R-101-D8 | 512x512   |  160000 | -        |  FSSS  | 58.85 |               |
+| DeepLabV3+ | R-101-D8 | 512x512   |  160000 | -        |  WSSS  | 5?    |               |
 
