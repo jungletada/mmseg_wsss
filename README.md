@@ -98,8 +98,8 @@ If you find this project useful in your research, please consider cite:
 
 This project is released under the [Apache 2.0 license](LICENSE).
 
-# DeepLabV3+
-
+## Weakly Supervised Semantic Segmentation
+We use DeepLabV3+ for the final semantic segmentation stage.
 > [Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation](https://arxiv.org/abs/1802.02611)
 
 <a href="https://github.com/tensorflow/models/tree/master/research/deeplab">[Official Repo]</a>
@@ -119,6 +119,8 @@ OpenMMLab2.0 implements distributed training with MMDistributedDataParallel. Use
 ```bash
 sh tools/dist_train.sh configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512.py ${GPU_NUM}
 ```
+
+
 ## Results and models
 
 ### Pascal VOC 2012 + Aug
