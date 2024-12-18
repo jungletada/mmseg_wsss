@@ -105,7 +105,20 @@ This project is released under the [Apache 2.0 license](LICENSE).
 <a href="https://github.com/tensorflow/models/tree/master/research/deeplab">[Official Repo]</a>
 <a href="https://github.com/open-mmlab/mmsegmentation/blob/v0.17.0/mmseg/models/decode_heads/sep_aspp_head.py#L30">[Code Snippet]</a>
 
+## Training on a single GPU
+Use `tools/train.py` to launch training jobs on a single GPU. The basic usage is as follows.
+```bash
+python tools/train.py configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512.py
+```
+```bash
+python tools/train.py configs/deeplabv3plus/deeplabv3plus_r101-d8_80k_mscoco-512x512.py
+```
 
+## Training on multiple GPUs
+OpenMMLab2.0 implements distributed training with MMDistributedDataParallel. Use  `tools/dist_train.sh` to launch training on multiple GPUs.
+```bash
+sh tools/dist_train.sh configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512.py ${GPU_NUM}
+```
 ## Results and models
 
 ### Pascal VOC 2012 + Aug

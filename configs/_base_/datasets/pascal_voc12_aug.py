@@ -26,8 +26,8 @@ test_pipeline = [
     dict(type='PackSegInputs')
 ]
 
-img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
-# img_ratios = [1.0]
+# img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
+img_ratios = [1.0]
 tta_pipeline = [
     dict(type='LoadImageFromFile', backend_args=None),
     dict(
@@ -49,7 +49,7 @@ dataset_aug = dict(
     data_root=data_root,
     data_prefix=dict(
         ##### replace seg_map_path='SegmentationClassAug' with 'pseudo_mask'
-        img_path='JPEGImages', seg_map_path='pseudo_mask'),
+        img_path='JPEGImages', seg_map_path='SegmentationClassAug'),
     ann_file='ImageLists/train_aug_id.txt',
     pipeline=train_pipeline)
 

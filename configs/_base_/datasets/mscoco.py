@@ -50,12 +50,12 @@ dataset_aug = dict(
     data_prefix=dict(
         ##### replace seg_map_path='MaskSets/train2014' with 'pseudo_mask'
         img_path='train2014', seg_map_path='MaskSets/train2014'),
-    ann_file='ImageList/train_id.txt',
+    ann_file='ImageLists/train_id.txt',
     pipeline=train_pipeline)
 
 train_dataloader = dict(
-    batch_size=16,
-    num_workers=16,
+    batch_size=15,
+    num_workers=15,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=dataset_aug)
@@ -70,7 +70,7 @@ val_dataloader = dict(
         data_root=data_root,
         data_prefix=dict(
             img_path='val2014', seg_map_path='MaskSets/val2014'),
-        ann_file='ImageList/val_id.txt',
+        ann_file='ImageLists/val_id.txt',
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
