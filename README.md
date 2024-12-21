@@ -120,18 +120,23 @@ OpenMMLab2.0 implements distributed training with MMDistributedDataParallel. Use
 sh tools/dist_train.sh configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512.py ${GPU_NUM}
 ```
 
-
+## Testing on a single GPU
+Please use `tools/test.py` to launch training jobs on a single GPU. The basic usage is as follows.
+```bash
+python tools/test.py configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512.py work_dirs/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512/deeplabv3+_r101_mcta_wsss_voc.pth --tta
+```
+`--tta`: Test time augmentation option.  
 ## Results and models
 
 ### Pascal VOC 2012 + Aug
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) |  Type  |  mIoU | mIoU(ms+flip) | 
 | ---------- | -------- | --------- | ------: | -------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | -        |  FSSS  | 78.62 |         79.53 |
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 | 11       |  WSSS  | 7?    |         ?     |
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 |    11    |  FSSS  | 78.62 |      79.53    |
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 |    11    |  WSSS  | 76.70 |      77.77    |
 
 ### MSCOCO
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) |  Type  |  mIoU | mIoU(ms+flip) | 
 | ---------- | -------- | --------- | ------: | -------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-101-D8 | 512x512   |  160000 | -        |  FSSS  | 58.85 |               |
-| DeepLabV3+ | R-101-D8 | 512x512   |  160000 | -        |  WSSS  | 5?    |               |
+| DeepLabV3+ | R-101-D8 | 512x512   |  160000 |     12   |  FSSS  | 58.85 |               |
+| DeepLabV3+ | R-101-D8 | 512x512   |  160000 |     12   |  WSSS  | 5?    |               |
 
