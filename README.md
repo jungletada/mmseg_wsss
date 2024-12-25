@@ -105,38 +105,84 @@ We use DeepLabV3+ for the final semantic segmentation stage.
 <a href="https://github.com/tensorflow/models/tree/master/research/deeplab">[Official Repo]</a>
 <a href="https://github.com/open-mmlab/mmsegmentation/blob/v0.17.0/mmseg/models/decode_heads/sep_aspp_head.py#L30">[Code Snippet]</a>
 
-## Training on a single GPU
-Use `tools/train.py` to launch training jobs on a single GPU. The basic usage is as follows.
-```bash
-python tools/train.py configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512.py
-```
-```bash
-python tools/train.py configs/deeplabv3plus/deeplabv3plus_r101-d8_80k_mscoco-512x512.py
-```
+## Datasets
+- VOC:
+`${CONFIG}=configs/deeplabv3plus/deeplabv3plus_r101-d8-40k_voc12aug-512x512.py`
+- COCO:
+`${CONFIG}=configs/deeplabv3plus/deeplabv3plus_r101-d8_80k_mscoco-512x512.py`  
+**Please set the data path same as `MultiStage-MCTA`.**
+<details>
+<summary>
+VOC dataset
+</summary>
 
-## Training on multiple GPUs
+``` bash
+VOCdevkit/
+└── VOC2012
+    ├── Annotations
+    ├── ImageSets
+    ├── ImageLists
+    ├── ImageLabel
+    ├── JPEGImages
+    ├── SegmentationClass
+    ├── SegmentationClassAug
+    └── SegmentationObject
+```
+</details>
+
+<details>
+<summary>
+COCO dataset
+</summary>
+
+``` bash
+MSCOCO/
+├── train2014
+├── val2014
+├── ImageLists
+├── ImageLabel
+└── MaskSets
+     ├── train2014
+     └── val2014
+```
+</details>
+
+## Training
+### Training on a single GPU
+Please use `tools/train.py` to launch training jobs on a single GPU. The basic usage is as follows.  
+
+```bash
+python tools/train.py ${CONFIG}
+```
+### Training on multiple GPUs
 OpenMMLab2.0 implements distributed training with MMDistributedDataParallel. Use  `tools/dist_train.sh` to launch training on multiple GPUs.
 ```bash
-sh tools/dist_train.sh configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512.py ${GPU_NUM}
+sh tools/dist_train.sh ${CONFIG} ${GPU_NUM}
 ```
-
-## Testing on a single GPU
+## Testing
+### Testing on a single GPU
 Please use `tools/test.py` to launch training jobs on a single GPU. The basic usage is as follows.
 ```bash
-python tools/test.py configs/deeplabv3plus/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512.py work_dirs/deeplabv3plus_r101-d8_4xb4-40k_voc12aug-512x512/deeplabv3+_r101_mcta_wsss_voc.pth --tta
+python tools/test.py ${CONFIG} ${CHECKPOINT} --tta
 ```
 `--tta`: Test time augmentation option.  
+`${CHECKPOINT}`: Please specify the checkpoint path for testing.  
+### Testing on multiple GPUs
+Please use `tools/dist_test.sh` to launch testing on multiple GPUs. The basic usage is as follows.
+```bash
+sh tools/dist_test.sh ${CONFIG} ${CHECKPOINT} ${GPU_NUM} --tta
+```
 ## Results and models
 
 ### Pascal VOC 2012 + Aug
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) |  Type  |  mIoU | mIoU(ms+flip) | 
 | ---------- | -------- | --------- | ------: | -------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 |    11    |  FSSS  | 78.62 |      79.53    |
-| DeepLabV3+ | R-101-D8 | 512x512   |   40000 |    11    |  WSSS  | 76.70 |      77.77    |
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 |    11    |  FSSS  | 78.62 |    79.53      |
+| DeepLabV3+ | R-101-D8 | 512x512   |   40000 |    11    |  WSSS  | 76.70 |    77.77      |
 
 ### MSCOCO
 | Method     | Backbone | Crop Size | Lr schd | Mem (GB) |  Type  |  mIoU | mIoU(ms+flip) | 
 | ---------- | -------- | --------- | ------: | -------- | ------ | ----: | ------------: | 
-| DeepLabV3+ | R-101-D8 | 512x512   |  160000 |     12   |  FSSS  | 58.85 |               |
-| DeepLabV3+ | R-101-D8 | 512x512   |  160000 |     12   |  WSSS  | 5?    |               |
+| DeepLabV3+ | R-101-D8 | 512x512   |  80000  |   12.5   |  FSSS  | 58.85 |     59.75     |
+| DeepLabV3+ | R-101-D8 | 512x512   |  80000  |   12.5   |  WSSS  | 5?    |               |
 
