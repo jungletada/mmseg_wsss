@@ -49,7 +49,7 @@ dataset_aug = dict(
     data_root=data_root,
     data_prefix=dict(
         ##### replace seg_map_path='MaskSets/train2014' with 'pseudo_mask'
-        img_path='train2014', seg_map_path='MaskSets/train2014'),
+        img_path='train2014', seg_map_path='pseudo_mask'),
     ann_file='ImageLists/train_id.txt',
     pipeline=train_pipeline)
 

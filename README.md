@@ -106,10 +106,6 @@ We use DeepLabV3+ for the final semantic segmentation stage.
 <a href="https://github.com/open-mmlab/mmsegmentation/blob/v0.17.0/mmseg/models/decode_heads/sep_aspp_head.py#L30">[Code Snippet]</a>
 
 ## Datasets
-- VOC:
-`${CONFIG}=configs/deeplabv3plus/deeplabv3plus_r101-d8-40k_voc12aug-512x512.py`
-- COCO:
-`${CONFIG}=configs/deeplabv3plus/deeplabv3plus_r101-d8_80k_mscoco-512x512.py`  
 **Please set the data path same as `MultiStage-MCTA`.**
 <details>
 <summary>
@@ -147,17 +143,34 @@ MSCOCO/
 ```
 </details>
 
+## Configs and checkpoint
+- VOC:  
+-- Deeplab v3+:  
+`${CONFIG}=configs/deeplabv3plus/deeplabv3plus_r101-d8-40k_voc12aug-512x512.py`  
+`${PRETRAIN}=work_dirs/checkpoints/deeplabv3+-r101-voc-pretrain.pth`  
+-- MCTASeg:  
+`${CONFIG}=configs/mcta/mcta-largefov-d16-40k_voc12aug-512x512.py`  
+`${PRETRAIN}=work_dirs/checkpoints/mcta-deit-small-voc-7458.pth`
+
+- COCO: 
+-- Deeplab v3+:  
+`${CONFIG}=configs/deeplabv3plus/deeplabv3plus_r101-d8_80k_mscoco-512x512.py`  
+`${PRETRAIN}=work_dirs/checkpoints/deeplabv3+-r101-mscoco-pretrain.pth`  
+-- MCTASeg:  
+`${CONFIG}=configs/mcta/mcta-largefov-d16-40k_voc12aug-512x512.py`  
+`${PRETRAIN}=work_dirs/checkpoints/mcta-deit-small-voc-7458.pth`
+
 ## Training
 ### Training on a single GPU
 Please use `tools/train.py` to launch training jobs on a single GPU. The basic usage is as follows.  
-
+work_dirs/checkpoints/mcta-deit-small-voc-pretrained.pth
 ```bash
-python tools/train.py ${CONFIG}
+python tools/train.py ${CONFIG} --cfg-options load_from=${PRETRAIN}
 ```
 ### Training on multiple GPUs
 OpenMMLab2.0 implements distributed training with MMDistributedDataParallel. Use  `tools/dist_train.sh` to launch training on multiple GPUs.
 ```bash
-sh tools/dist_train.sh ${CONFIG} ${GPU_NUM}
+sh tools/dist_train.sh ${CONFIG} ${GPU_NUM} --cfg-options load_from=${PRETRAIN}
 ```
 ## Testing
 ### Testing on a single GPU
